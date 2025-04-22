@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {InputBox} from './components'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
+import chaiImg from './assets/puppy_snapchat_story.jpeg';
 
 
 function App() {
@@ -27,13 +28,14 @@ function App() {
 
   return (
     <div
-        className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
+        className="w-full h-screen flex justify-end items-center bg-cover bg-no-repeat"
         style={{
             backgroundImage: `url('https://images.pexels.com/photos/3532540/pexels-photo-3532540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
         }}
     >
-        <div className="w-full">
-            <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+        <div className="w-full flex justify-evenly">
+            
+            <div className="w-full max-w-md border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -64,7 +66,7 @@ function App() {
                         <InputBox
                             label="To"
                             amount={convertedAmount}
-                            currencyOptions={options}
+                            currencyOptions={options.filter((curr) => curr !== from)}
                             onCurrencyChange={(currency) => setTo(currency)}
                             selectCurrency={to}
                             amountDisable
